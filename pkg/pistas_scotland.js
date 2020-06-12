@@ -114,6 +114,14 @@ export function greet(name) {
     wasm.greet(ptr0, len0);
 }
 
+/**
+* @param {number} numero_livro
+* @param {number} numero_dica
+*/
+export function usar_dica(numero_livro, numero_dica) {
+    wasm.usar_dica(numero_livro, numero_dica);
+}
+
 function isLikeNone(x) {
     return x === undefined || x === null;
 }
@@ -186,12 +194,12 @@ async function init(input) {
         var ret = getObject(arg0).getElementById(getStringFromWasm0(arg1, arg2));
         return isLikeNone(ret) ? 0 : addHeapObject(ret);
     };
-    imports.wbg.__wbg_setinnerHTML_fa41693ca0f0bba5 = function(arg0, arg1, arg2) {
-        getObject(arg0).innerHTML = getStringFromWasm0(arg1, arg2);
-    };
     imports.wbg.__wbg_instanceof_HtmlElement_97bd46b1ff6a2cf5 = function(arg0) {
         var ret = getObject(arg0) instanceof HTMLElement;
         return ret;
+    };
+    imports.wbg.__wbg_setinnerText_17717ee9be6024fe = function(arg0, arg1, arg2) {
+        getObject(arg0).innerText = getStringFromWasm0(arg1, arg2);
     };
     imports.wbg.__wbg_call_20c04382b27a4486 = handleError(function(arg0, arg1) {
         var ret = getObject(arg0).call(getObject(arg1));
