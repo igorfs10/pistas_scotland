@@ -6,6 +6,7 @@ edition = "2018"
 license = "gpl-v3"
 repository = "https://github.com/igorfs10/pistas_scotland"
 description = "Um site para ver as pistas do Scotland Yard em WebAssembly usando Rust."
+homepage = "https://igorfs10.github.io/pistas_scotland/index.html"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
