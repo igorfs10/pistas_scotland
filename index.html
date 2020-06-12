@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>Pistas Scotland Yard</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" href="bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container" id="escolher">
+
+      <div class="row">
+        <div class="col-12">
+          <p class="text-center">Escolha o livro:</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-center">
+          <input class="form-check-input" type="radio" id="livro1" name="livros" value="1" checked>
+          <label class="form-check-label" for="livro1">Livro 1</label>
+        </div>
+        <div class="col-4 text-center">
+          <input class="form-check-input" type="radio" id="livro2" name="livros" value="2">
+          <label class="form-check-label" for="livro2">Livro 2</label>
+        </div>
+        <div class="col-4 text-center">
+          <input class="form-check-input" type="radio" id="livro3" name="livros" value="3">
+          <label class="form-check-label" for="livro3">Livro 3</label>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Número da pista:</span>
+            </div>
+            <input class="form-control" type="number" min="1" max="300" id="numeroPista">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-primary btn-block" id="verPista">Ver Pista</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container" id="pista">
+      <div class="col-12">
+        <p id="textoPista"></p>
+      </div>
+    </div>
+
+    <script type="module">
+      import init from './pkg/pistas_scotland.js';
+
+      async function run() {
+        await init();
+      }
+
+      run();
+    </script>
+  </body>
+</html>

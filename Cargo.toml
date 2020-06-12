@@ -1,0 +1,25 @@
+[package]
+name = "pistas_scotland"
+version = "0.0.1"
+authors = ["Igorfs10 <igorfs10@gmail.com>"]
+edition = "2018"
+license = "gpl-v3"
+repository = "https://github.com/igorfs10/pistas_scotland"
+description = "Um site para ver as pistas do Scotland Yard em WebAssembly usando Rust."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "^0.2.63"
+
+[dependencies.web-sys]
+version = "^0.3.4"
+features = [
+  'Document',
+  'Element',
+  'HtmlElement',
+  'HtmlInputElement',
+  'Node',
+  'Window'
+]
