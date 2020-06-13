@@ -15,7 +15,11 @@ use livro3::LIVRO_3;
 // Called when the wasm module is instantiated
 #[wasm_bindgen(start)]
 pub fn main() -> Result<(), JsValue> {
-    usar_dica(1, 1)?;
+    let window = window().expect("no global `window` exists");
+    let document = window.document().expect("should have a document on window");
+    let tela = document.get_element_by_id("tela").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+    let escolher = document.get_element_by_id("escolher").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+    tela.set_inner_html(&escolher.inner_html());
     Ok(())
 }
 
@@ -25,11 +29,6 @@ extern {
 
     #[wasm_bindgen(js_namespace = console)]
     pub fn log(s: &str);
-}
-
-#[wasm_bindgen]
-pub fn greet(name: &str) {
-    alert(&format!("Hello, {}!", name));
 }
 
 #[wasm_bindgen]

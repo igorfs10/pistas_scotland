@@ -11,7 +11,7 @@
 
     <div class="container" id="tela"></div>
 
-    <div class="container" id="escolher">
+    <div class="container" id="escolher" hidden>
 
       <div class="row">
         <div class="col-12">
@@ -55,7 +55,8 @@
 
     </div>
 
-    <div class="container" id="pista">
+    <div class="container" id="pista" hidden>
+
       <div class="row">
         <div class="col-12">
           <h4>Tempo restante: <span id="tempoRestante">30</span></h4>
@@ -71,9 +72,16 @@
     </div>
 
     <script type="module">
+
       "use strict";
+
       let document = window.document;
       let verPista = document.getElementById("verPista");
+      let livro1 = document.getElementById("livro1");
+      let livro2 = document.getElementById("livro2");
+      let livro3 = document.getElementById("livro3");
+      let numeroPista = document.getElementById("numeroPista");
+
       verPista.onclick = usarDica;
 
       import init, { usar_dica, atualizar_tempo_restante } from './pkg/pistas_scotland.js';
@@ -84,7 +92,32 @@
 
       run();
 
-      function usarDica(){
+      function usarDica() {
+        if(livro1.checked) {
+          let numero = parseInt(numeroPista.value) || 0;
+          if(numero < 1 || numero > 1){
+            alert("Escolha um número entre 1 e 1;");
+          } else {
+            usar_dica(1, numero);
+          }
+        } else if(livro2.checked) {
+          if(numero < 1 || numero > 1){
+            alert("Escolha um número entre 1 e 1;");
+          } else {
+            usar_dica(2, numero);
+          }
+        } else if(livro3.checked) {
+          if(numero < 1 || numero > 1){
+            alert("Escolha um número entre 1 e 1;");
+          } else {
+            usar_dica(3, numero);
+          }
+        } else {
+          alert("Escolha um livro!");
+        }
+      }
+
+      function atualizar() {
 
       }
 

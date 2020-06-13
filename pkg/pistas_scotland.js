@@ -51,6 +51,25 @@ export function main() {
     wasm.main();
 }
 
+/**
+* @param {number} numero_livro
+* @param {number} numero_dica
+*/
+export function usar_dica(numero_livro, numero_dica) {
+    wasm.usar_dica(numero_livro, numero_dica);
+}
+
+/**
+* @param {number} tempo_restante
+*/
+export function atualizar_tempo_restante(tempo_restante) {
+    wasm.atualizar_tempo_restante(tempo_restante);
+}
+
+function isLikeNone(x) {
+    return x === undefined || x === null;
+}
+
 let WASM_VECTOR_LEN = 0;
 
 let cachedTextEncoder = new TextEncoder('utf-8');
@@ -104,33 +123,6 @@ function passStringToWasm0(arg, malloc, realloc) {
 
     WASM_VECTOR_LEN = offset;
     return ptr;
-}
-/**
-* @param {string} name
-*/
-export function greet(name) {
-    var ptr0 = passStringToWasm0(name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    var len0 = WASM_VECTOR_LEN;
-    wasm.greet(ptr0, len0);
-}
-
-/**
-* @param {number} numero_livro
-* @param {number} numero_dica
-*/
-export function usar_dica(numero_livro, numero_dica) {
-    wasm.usar_dica(numero_livro, numero_dica);
-}
-
-/**
-* @param {number} tempo_restante
-*/
-export function atualizar_tempo_restante(tempo_restante) {
-    wasm.atualizar_tempo_restante(tempo_restante);
-}
-
-function isLikeNone(x) {
-    return x === undefined || x === null;
 }
 
 let cachegetInt32Memory0 = null;
@@ -191,9 +183,6 @@ async function init(input) {
     }
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbg_alert_d5003a2da67d5a07 = function(arg0, arg1) {
-        alert(getStringFromWasm0(arg0, arg1));
-    };
     imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
         takeObject(arg0);
     };
