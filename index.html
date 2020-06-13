@@ -58,7 +58,7 @@
     <div class="container" id="pista">
       <div class="row">
         <div class="col-12">
-          <h4 id="tempoRestante">Tempo restante: 30</h4>
+          <h4>Tempo restante: <span id="tempoRestante">30</span></h4>
         </div>
       </div>
 
@@ -71,13 +71,24 @@
     </div>
 
     <script type="module">
-      import init from './pkg/pistas_scotland.js';
+      "use strict";
+      let window = window;
+      let document = window.document;
+      let verPista = document.getElementById("verPista");
+      verPista.onclick = usarDica;
+
+      import init, { usar_dica, atualizar_tempo_restante } from './pkg/pistas_scotland.js';
 
       async function run() {
         await init();
       }
 
       run();
+
+      function usarDica(){
+
+      }
+
     </script>
   </body>
 </html>

@@ -5,7 +5,6 @@ mod livro1;
 mod livro2;
 mod livro3;
 
-use std::{thread, time};
 use wasm_bindgen::prelude::*;
 use web_sys::*;
 use wasm_bindgen::JsCast;
@@ -50,27 +49,26 @@ pub fn usar_dica(numero_livro: u8, numero_dica: usize) -> Result<(), JsValue> {
         texto_pista.set_inner_text(LIVRO_3[numero_dica - 1]);
     }
 
-    let mut tempo_restante: i8 = 30;
+    // window.set_interval_with_callback_and_timeout_and_arguments_0();
+    atualizar_tempo_restante(30)?;
+    // Thread não funciona com wasm
+    // thread::sleep(time::Duration::from_secs(1));
 
-    loop {
-        tempo_restante -= 1;
-        atualizar_tempo_restante(tempo_restante)?;
-        thread::sleep(time::Duration::from_secs(1));
-        if tempo_restante == 0 {
-            break;
-        }
-    }
+    let tela = document.get_element_by_id("tela").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+    let pista = document.get_element_by_id("pista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+    tela.set_inner_html(&pista.inner_html());
 
     Ok(())
 }
 
+#[wasm_bindgen]
 pub fn atualizar_tempo_restante (tempo_restante: i8) -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
     // let body = document.body().expect("document should have a body");
 
     let texto_pista = document.get_element_by_id("tempoRestante").unwrap().dyn_into::<web_sys::HtmlElement>()?;
-    let text = format!("Tempo restante: {}", tempo_restante);
+    let text = format!("{}", tempo_restante);
     texto_pista.set_inner_text(&text);
     Ok(())
 }

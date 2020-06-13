@@ -122,8 +122,23 @@ export function usar_dica(numero_livro, numero_dica) {
     wasm.usar_dica(numero_livro, numero_dica);
 }
 
+/**
+* @param {number} tempo_restante
+*/
+export function atualizar_tempo_restante(tempo_restante) {
+    wasm.atualizar_tempo_restante(tempo_restante);
+}
+
 function isLikeNone(x) {
     return x === undefined || x === null;
+}
+
+let cachegetInt32Memory0 = null;
+function getInt32Memory0() {
+    if (cachegetInt32Memory0 === null || cachegetInt32Memory0.buffer !== wasm.memory.buffer) {
+        cachegetInt32Memory0 = new Int32Array(wasm.memory.buffer);
+    }
+    return cachegetInt32Memory0;
 }
 
 function handleError(f) {
@@ -176,11 +191,11 @@ async function init(input) {
     }
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
-        takeObject(arg0);
-    };
     imports.wbg.__wbg_alert_d5003a2da67d5a07 = function(arg0, arg1) {
         alert(getStringFromWasm0(arg0, arg1));
+    };
+    imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
+        takeObject(arg0);
     };
     imports.wbg.__wbg_instanceof_Window_d64060d13377409b = function(arg0) {
         var ret = getObject(arg0) instanceof Window;
@@ -193,6 +208,16 @@ async function init(input) {
     imports.wbg.__wbg_getElementById_0e0dd6444cdc0602 = function(arg0, arg1, arg2) {
         var ret = getObject(arg0).getElementById(getStringFromWasm0(arg1, arg2));
         return isLikeNone(ret) ? 0 : addHeapObject(ret);
+    };
+    imports.wbg.__wbg_innerHTML_e0123a8025005788 = function(arg0, arg1) {
+        var ret = getObject(arg1).innerHTML;
+        var ptr0 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        var len0 = WASM_VECTOR_LEN;
+        getInt32Memory0()[arg0 / 4 + 1] = len0;
+        getInt32Memory0()[arg0 / 4 + 0] = ptr0;
+    };
+    imports.wbg.__wbg_setinnerHTML_fa41693ca0f0bba5 = function(arg0, arg1, arg2) {
+        getObject(arg0).innerHTML = getStringFromWasm0(arg1, arg2);
     };
     imports.wbg.__wbg_instanceof_HtmlElement_97bd46b1ff6a2cf5 = function(arg0) {
         var ret = getObject(arg0) instanceof HTMLElement;
