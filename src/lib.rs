@@ -17,9 +17,10 @@ use livro3::LIVRO_3;
 pub fn main() -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
-    let tela = document.get_element_by_id("tela").unwrap().dyn_into::<web_sys::HtmlElement>()?;
     let escolher = document.get_element_by_id("escolher").unwrap().dyn_into::<web_sys::HtmlElement>()?;
-    tela.set_inner_html(&escolher.inner_html());
+    let pista = document.get_element_by_id("pista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+    escolher.set_hidden(false);
+    pista.set_hidden(true);
     Ok(())
 }
 
@@ -35,6 +36,8 @@ extern {
 pub fn usar_pista(numero_livro: u8, numero_pista: usize) -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
+    let escolher = document.get_element_by_id("escolher").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+    let pista = document.get_element_by_id("pista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
     // let body = document.body().expect("document should have a body");
 
     let texto_pista = document.get_element_by_id("textoPista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
@@ -48,14 +51,12 @@ pub fn usar_pista(numero_livro: u8, numero_pista: usize) -> Result<(), JsValue> 
         texto_pista.set_inner_text(LIVRO_3[numero_pista - 1]);
     }
 
-    // window.set_interval_with_callback_and_timeout_and_arguments_0();
     atualizar_tempo_restante(30)?;
     // Thread não funciona com wasm
     // thread::sleep(time::Duration::from_secs(1));
 
-    let tela = document.get_element_by_id("tela").unwrap().dyn_into::<web_sys::HtmlElement>()?;
-    let pista = document.get_element_by_id("pista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
-    tela.set_inner_html(&pista.inner_html());
+    pista.set_hidden(false);
+    escolher.set_hidden(true);
 
     Ok(())
 }
@@ -64,10 +65,8 @@ pub fn usar_pista(numero_livro: u8, numero_pista: usize) -> Result<(), JsValue> 
 pub fn atualizar_tempo_restante (tempo_restante: i8) -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
-    // let body = document.body().expect("document should have a body");
-
     let texto_pista = document.get_element_by_id("tempoRestante").unwrap().dyn_into::<web_sys::HtmlElement>()?;
-    let text = format!("{}", tempo_restante);
-    texto_pista.set_inner_text(&text);
+    
+    texto_pista.set_inner_text(&format!("{}", tempo_restante));
     Ok(())
 }

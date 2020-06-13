@@ -9,9 +9,7 @@
   </head>
   <body>
 
-    <div class="container" id="tela"></div>
-
-    <div class="container" id="escolher" hidden>
+    <div class="container" id="escolher">
 
       <div class="row">
         <div class="col-12">
@@ -55,7 +53,7 @@
 
     </div>
 
-    <div class="container" id="pista" hidden>
+    <div class="container" id="pista">
 
       <div class="row">
         <div class="col-12">
@@ -72,15 +70,16 @@
     </div>
 
     <script type="module">
-
       "use strict";
-
       let document = window.document;
+      let escolher = document.getElementById("escolher");
+      let pista = document.getElementById("pista");
       let verPista = document.getElementById("verPista");
       let livro1 = document.getElementById("livro1");
       let livro2 = document.getElementById("livro2");
       let livro3 = document.getElementById("livro3");
       let numeroPista = document.getElementById("numeroPista");
+      let tempoRestante = document.getElementById("tempoRestante");
 
       import init, { usar_pista, atualizar_tempo_restante } from './pkg/pistas_scotland.js';
 
@@ -91,27 +90,27 @@
       run();
 
       function usarPista() {
-        console.log("Entrou na função");
         if(livro1.checked) {
-          console.log("Entrou no livro 1");
           let numero = parseInt(numeroPista.value) || 0;
           if(numero < 1 || numero > 1){
             alert("Escolha um número entre 1 e 1;");
           } else {
-            console.log("fdsfsd");
             usar_pista(1, numero);
+            atualizar();
           }
         } else if(livro2.checked) {
           if(numero < 1 || numero > 1){
             alert("Escolha um número entre 1 e 1;");
           } else {
             usar_pista(2, numero);
+            atualizar();
           }
         } else if(livro3.checked) {
           if(numero < 1 || numero > 1){
             alert("Escolha um número entre 1 e 1;");
           } else {
             usar_pista(3, numero);
+            atualizar();
           }
         } else {
           alert("Escolha um livro!");
@@ -121,7 +120,15 @@
       verPista.onclick = usarPista;
 
       function atualizar() {
-
+        let tempo = parseInt(tempoRestante.innerText);
+        if(tempo <= 0) {
+          pista.hidden = true;
+          escolher.hidden = false;
+        } else {
+          --tempo;
+          atualizar_tempo_restante(tempo);
+          setTimeout(atualizar, 1000);
+        }
       }
 
     </script>
