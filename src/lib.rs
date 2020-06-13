@@ -32,20 +32,20 @@ extern {
 }
 
 #[wasm_bindgen]
-pub fn usar_dica(numero_livro: u8, numero_dica: usize) -> Result<(), JsValue> {
+pub fn usar_pista(numero_livro: u8, numero_pista: usize) -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
     // let body = document.body().expect("document should have a body");
 
     let texto_pista = document.get_element_by_id("textoPista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
     if numero_livro == 1 {
-        texto_pista.set_inner_text(LIVRO_1[numero_dica - 1]);
+        texto_pista.set_inner_text(LIVRO_1[numero_pista - 1]);
     }
     if numero_livro == 2 {
-        texto_pista.set_inner_text(LIVRO_2[numero_dica - 1]);
+        texto_pista.set_inner_text(LIVRO_2[numero_pista - 1]);
     }
     if numero_livro == 3 {
-        texto_pista.set_inner_text(LIVRO_3[numero_dica - 1]);
+        texto_pista.set_inner_text(LIVRO_3[numero_pista - 1]);
     }
 
     // window.set_interval_with_callback_and_timeout_and_arguments_0();

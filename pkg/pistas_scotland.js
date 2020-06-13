@@ -53,10 +53,10 @@ export function main() {
 
 /**
 * @param {number} numero_livro
-* @param {number} numero_dica
+* @param {number} numero_pista
 */
-export function usar_dica(numero_livro, numero_dica) {
-    wasm.usar_dica(numero_livro, numero_dica);
+export function usar_pista(numero_livro, numero_pista) {
+    wasm.usar_pista(numero_livro, numero_pista);
 }
 
 /**

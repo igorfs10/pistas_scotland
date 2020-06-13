@@ -82,9 +82,9 @@
       let livro3 = document.getElementById("livro3");
       let numeroPista = document.getElementById("numeroPista");
 
-      verPista.onclick = usarDica;
+      verPista.onclick = usarPista;
 
-      import init, { usar_dica, atualizar_tempo_restante } from './pkg/pistas_scotland.js';
+      import init, { usar_pista, atualizar_tempo_restante } from './pkg/pistas_scotland.js';
 
       async function run() {
         await init();
@@ -92,7 +92,7 @@
 
       run();
 
-      function usarDica() {
+      function usarPista() {
         console.log("Entrou na função");
         if(livro1.checked) {
           console.log("Entrou no livro 1");
@@ -101,19 +101,19 @@
             alert("Escolha um número entre 1 e 1;");
           } else {
             console.log("fdsfsd");
-            usar_dica(1, numero);
+            usar_pista(1, numero);
           }
         } else if(livro2.checked) {
           if(numero < 1 || numero > 1){
             alert("Escolha um número entre 1 e 1;");
           } else {
-            usar_dica(2, numero);
+            usar_pista(2, numero);
           }
         } else if(livro3.checked) {
           if(numero < 1 || numero > 1){
             alert("Escolha um número entre 1 e 1;");
           } else {
-            usar_dica(3, numero);
+            usar_pista(3, numero);
           }
         } else {
           alert("Escolha um livro!");
