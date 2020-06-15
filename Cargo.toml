@@ -18,9 +18,8 @@ wasm-bindgen = "^0.2.63"
 version = "^0.3.4"
 features = [
   "Document",
-  "Element",
   "HtmlElement",
   "HtmlInputElement",
-  "Node",
+  "HtmlAudioElement",
   "Window"
 ]

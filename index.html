@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="bootstrap.min.css">
   </head>
+
   <body>
-
     <div class="container" id="escolher" hidden="true">
-
       <div class="row">
         <div class="col-12">
           <p class="text-center">Escolha o livro:</p>
@@ -22,10 +21,12 @@
           <input class="form-check-input" type="radio" id="livro1" name="livros" value="1" checked>
           <label class="form-check-label" for="livro1">Livro 1</label>
         </div>
+
         <div class="col-4 text-center">
           <input class="form-check-input" type="radio" id="livro2" name="livros" value="2">
           <label class="form-check-label" for="livro2">Livro 2</label>
         </div>
+
         <div class="col-4 text-center">
           <input class="form-check-input" type="radio" id="livro3" name="livros" value="3">
           <label class="form-check-label" for="livro3">Livro 3</label>
@@ -54,7 +55,6 @@
     </div>
 
     <div class="container" id="pista" hidden="true">
-
       <div class="row">
         <div class="col-12">
           <h4>Tempo restante: <span id="tempoRestante">30</span></h4>
@@ -66,82 +66,16 @@
           <p id="textoPista">fsdf sdf s fd sf sd fsd f sdfsdfsd fsd fsdfsd sdffsdfsdf sdfds fsdf</p>
         </div>
       </div>
-
     </div>
 
     <script type="module">
-      "use strict";
-      let document = window.document;
-      let escolher = document.getElementById("escolher");
-      let pista = document.getElementById("pista");
-      let verPista = document.getElementById("verPista");
-      let livro1 = document.getElementById("livro1");
-      let livro2 = document.getElementById("livro2");
-      let livro3 = document.getElementById("livro3");
-      let numeroPista = document.getElementById("numeroPista");
-      let tempoRestante = document.getElementById("tempoRestante");
-      let somComeco = new Audio("audio/comeco.wav");
-      let somTermino = new Audio("audio/termino.wav");
-
-      import init, { usar_pista, atualizar_tempo_restante } from './pkg/pistas_scotland.js';
+      import init from './pkg/pistas_scotland.js';
 
       async function run() {
         await init();
       }
 
       run();
-
-      function usarPista() {
-        const TOTAL_LIVRO_1 = 8;
-        const TOTAL_LIVRO_2 = 1;
-        const TOTAL_LIVRO_3 = 1;
-        if(livro1.checked) {
-          let numero = parseInt(numeroPista.value) || 0;
-          if(numero < 1 || numero > TOTAL_LIVRO_1){
-            alert(`Escolha um número entre 1 e ${TOTAL_LIVRO_1}.`);
-          } else {
-            somComeco.play();
-            usar_pista(1, numero);
-            atualizar();
-          }
-        } else if(livro2.checked) {
-          let numero = parseInt(numeroPista.value) || 0;
-          if(numero < 1 || numero > TOTAL_LIVRO_2){
-            alert(`Escolha um número entre 1 e ${TOTAL_LIVRO_2}.`);
-          } else {
-            somComeco.play();
-            usar_pista(2, numero);
-            atualizar();
-          }
-        } else if(livro3.checked) {
-          let numero = parseInt(numeroPista.value) || 0;
-          if(numero < 1 || numero > TOTAL_LIVRO_3){
-            alert(`Escolha um número entre 1 e ${TOTAL_LIVRO_3}.`);
-          } else {
-            somComeco.play();
-            usar_pista(3, numero);
-            atualizar();
-          }
-        } else {
-          alert("Escolha um livro!");
-        }
-      }
-
-      verPista.onclick = usarPista;
-
-      function atualizar() {
-        let tempo = parseInt(tempoRestante.innerText);
-        if(tempo <= 0) {
-          pista.hidden = true;
-          escolher.hidden = false;
-          somTermino.play();
-        } else {
-          --tempo;
-          atualizar_tempo_restante(tempo);
-          setTimeout(atualizar, 1000);
-        }
-      }
-
     </script>
   </body>
 </html>
