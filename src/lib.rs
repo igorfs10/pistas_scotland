@@ -96,13 +96,13 @@ pub fn usar_pista() -> Result<(), JsValue> {
 }
 
 pub fn carregar_pista() -> Result<(), JsValue> {
-    let som_inicio = HtmlAudioElement::new_with_src(&format!("data:audio/wav;base64,{}", SOM_INICIO));
+    let som_inicio = HtmlAudioElement::new_with_src(&format!("data:audio/wav;base64,{}", SOM_INICIO))?;
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
     let escolher = document.get_element_by_id("escolher").unwrap().dyn_into::<web_sys::HtmlElement>()?;
     let pista = document.get_element_by_id("pista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
 
-    let _ = som_inicio.unwrap().play().unwrap();
+    let _ = som_inicio.play().unwrap();
     atualizar_tempo_restante(30)?;
     pista.set_hidden(false);
     escolher.set_hidden(true);
@@ -112,7 +112,7 @@ pub fn carregar_pista() -> Result<(), JsValue> {
 }
 
 pub fn atualizar() -> Result<(), JsValue> {
-    let som_termino = HtmlAudioElement::new_with_src(&format!("data:audio/wav;base64,{}", SOM_TERMINO));
+    let som_termino = HtmlAudioElement::new_with_src(&format!("data:audio/wav;base64,{}", SOM_TERMINO))?;
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
     let escolher = document.get_element_by_id("escolher").unwrap().dyn_into::<web_sys::HtmlElement>()?;
@@ -121,7 +121,7 @@ pub fn atualizar() -> Result<(), JsValue> {
     let tempo = pegar_tempo_restante().unwrap();
 
     if tempo <= 0 {
-        let _ = som_termino.unwrap().play().unwrap();
+        let _ = som_termino.play().unwrap();
         pista.set_hidden(true);
         escolher.set_hidden(false);
     } else {
