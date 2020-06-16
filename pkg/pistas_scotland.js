@@ -346,6 +346,10 @@ async function init(input) {
         var ret = new Function(getStringFromWasm0(arg0, arg1));
         return addHeapObject(ret);
     };
+    imports.wbg.__wbg_finally_edaa9fb873c731d8 = function(arg0, arg1) {
+        var ret = getObject(arg0).finally(getObject(arg1));
+        return addHeapObject(ret);
+    };
     imports.wbg.__wbg_self_944d201f31e01c91 = handleError(function() {
         var ret = self.self;
         return addHeapObject(ret);
@@ -379,7 +383,7 @@ async function init(input) {
     imports.wbg.__wbindgen_rethrow = function(arg0) {
         throw takeObject(arg0);
     };
-    imports.wbg.__wbindgen_closure_wrapper34 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper35 = function(arg0, arg1, arg2) {
         var ret = makeMutClosure(arg0, arg1, 3, __wbg_adapter_18);
         return addHeapObject(ret);
     };
