@@ -14,19 +14,7 @@ use livro2::LIVRO_2;
 use livro3::LIVRO_3;
 use sons:: { SOM_INICIO, SOM_TERMINO };
 
-struct IntervalHandle {
-    interval_id: i32,
-    _closure: Closure<dyn FnMut()>,
-}
-
-impl Drop for IntervalHandle {
-    fn drop(&mut self) {
-        let window = web_sys::window().unwrap();
-        window.clear_interval_with_handle(self.interval_id);
-    }
-}
-
-// Called when the wasm module is instantiated
+// Importa a função main para ser executada quando a página abre
 #[wasm_bindgen(start)]
 pub fn main() -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
@@ -38,6 +26,7 @@ pub fn main() -> Result<(), JsValue> {
     pista.set_hidden(true);
     escolher.set_hidden(false);
 
+    // Callback para o clique do botão
     let btn_click = Closure::wrap(Box::new(move || {
         usar_pista().expect("Não fez botão");
     }) as Box<dyn FnMut()>);
@@ -48,6 +37,7 @@ pub fn main() -> Result<(), JsValue> {
     Ok(())
 }
 
+// Função executada quando clica no botão de ver pista
 fn usar_pista() -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
@@ -97,6 +87,7 @@ fn usar_pista() -> Result<(), JsValue> {
     Ok(())
 }
 
+// Função que carrega a pista na tela
 fn carregar_pista() -> Result<(), JsValue> {
     let som_inicio = HtmlAudioElement::new_with_src(&format!("data:audio/wav;base64,{}", SOM_INICIO))?;
 
@@ -110,6 +101,7 @@ fn carregar_pista() -> Result<(), JsValue> {
     Ok(())
 }
 
+// Muda e seta a tela que mostra a pista  para usar como callback
 fn mudar_para_pista() -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
@@ -124,6 +116,20 @@ fn mudar_para_pista() -> Result<(), JsValue> {
     Ok(())
 }
 
+// Muda e seta a tela de escolha de pista para usar como callback
+fn mudar_para_escolha() -> Result<(), JsValue> {
+    let window = window().expect("no global `window` exists");
+    let document = window.document().expect("should have a document on window");
+    let escolher = document.get_element_by_id("escolher").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+    let pista = document.get_element_by_id("pista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
+
+    pista.set_hidden(true);
+    escolher.set_hidden(false);
+
+    Ok(())
+}
+
+// Função que fica atualizando o tempo através do setTimeout e carrega a tela de escolha de pista quando acaba o tempo
 fn atualizar() -> Result<(), JsValue> {
     let som_termino = HtmlAudioElement::new_with_src(&format!("data:audio/wav;base64,{}", SOM_TERMINO))?;
     let window = window().expect("no global `window` exists");
@@ -151,18 +157,7 @@ fn atualizar() -> Result<(), JsValue> {
     Ok(())
 }
 
-fn mudar_para_escolha() -> Result<(), JsValue> {
-    let window = window().expect("no global `window` exists");
-    let document = window.document().expect("should have a document on window");
-    let escolher = document.get_element_by_id("escolher").unwrap().dyn_into::<web_sys::HtmlElement>()?;
-    let pista = document.get_element_by_id("pista").unwrap().dyn_into::<web_sys::HtmlElement>()?;
-
-    pista.set_hidden(true);
-    escolher.set_hidden(false);
-
-    Ok(())
-}
-
+// Função que muda o tempo restante na tela
 fn atualizar_tempo_restante (tempo_restante: i8) -> Result<(), JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
@@ -172,6 +167,7 @@ fn atualizar_tempo_restante (tempo_restante: i8) -> Result<(), JsValue> {
     Ok(())
 }
 
+// Função que pega o tempo restante na tela
 fn pegar_tempo_restante() -> Result<i8, JsValue> {
     let window = window().expect("no global `window` exists");
     let document = window.document().expect("should have a document on window");
