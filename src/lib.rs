@@ -53,7 +53,7 @@ fn usar_pista() -> Result<(), JsValue> {
                     carregar_pista()?;
                 }
                 else {
-                    window.alert_with_message(&format!("Escolha um número entre 1 e {}.", LIVRO_1.len()))?;
+                    window.alert_with_message(&format!("Digite um número entre 1 e {}.", LIVRO_1.len()))?;
                 }
             }
             if livro2.checked() {
@@ -62,7 +62,7 @@ fn usar_pista() -> Result<(), JsValue> {
                     carregar_pista()?;
                 }
                 else {
-                    window.alert_with_message(&format!("Escolha um número entre 1 e {}.", LIVRO_2.len()))?;
+                    window.alert_with_message(&format!("Digite um número entre 1 e {}.", LIVRO_2.len()))?;
                 }
             }
             if livro3.checked() {
@@ -71,12 +71,20 @@ fn usar_pista() -> Result<(), JsValue> {
                     carregar_pista()?;
                 }
                 else {
-                    window.alert_with_message(&format!("Escolha um número entre 1 e {}.", LIVRO_3.len()))?;
+                    window.alert_with_message(&format!("Digite um número entre 1 e {}.", LIVRO_3.len()))?;
                 }
             }
         }
         Err(_) => {
-            window.alert_with_message("Digite um número no campo.")?;
+            if livro1.checked(){
+                window.alert_with_message(&format!("Digite um número entre 1 e {}.", LIVRO_1.len()))?;
+            }
+            if livro2.checked(){
+                window.alert_with_message(&format!("Digite um número entre 1 e {}.", LIVRO_2.len()))?;
+            }
+            if livro3.checked(){
+                window.alert_with_message(&format!("Digite um número entre 1 e {}.", LIVRO_3.len()))?;
+            }
         }
     }
 

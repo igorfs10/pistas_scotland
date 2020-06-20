@@ -1,6 +1,6 @@
 const SEM_PISTA: &str = "(Sem pista.)";
 
-pub const LIVRO_1: [&str; 71] = [
+pub const LIVRO_1: [&str; 80] = [
     "Earl Akintern tem constantes dores de cabeça.",
     "A faca no peito de Foster não foi enfiada por mãos humanas.",
     "Pista do assassino (3 partes):\nIII) Sabor amargo.",
@@ -71,7 +71,16 @@ pub const LIVRO_1: [&str; 71] = [
     "Pista do motivo (3 partes):\nIII) Linha que segue uma direção constante.",
     "Pista do esconderijo das chapas(2 partes):\nI) As chapas estão escondidas na concavidade por baixo ...\n(continua na pista II, museu).",
     "Dê uma passada na livraria.",
-    "O manuscrito original de Hamlet foi roubado recentemente de uma exposição em Nice, no litoral da França."
+    "O manuscrito original de Hamlet foi roubado recentemente de uma exposição em Nice, no litoral da França.",
+    SEM_PISTA,
+    "Pista geral do motivo e do assassino:\nUm pequeno passarinho contou tudo para ela.",
+    "Pista do motivo (2 partes):\nI) Indica condição.",
+    "Durante os últimos 2 anos, Wellington Bakman vem mantendo um padrão de vida incompatível com seu salário.",
+    "Pista do assassino (2 partes):\nI)Advérbio de lugar.",
+    "O assassino é um homem.",
+    "Pista da arma (3 partes):\nII) Embarcação a vela usada para passeio.",
+    "Pista do assassino (2 partes):\nII) O oposto de agudo.",
+    "Pista da arma (3 partes):\nIII) Extremidades inferiores do corpo humano."
 ];
 
 pub const LIVRO_2: [&str; 1] = [
