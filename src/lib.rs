@@ -1,17 +1,13 @@
 extern crate wasm_bindgen;
 extern crate web_sys;
 
-mod livro1;
-mod livro2;
-mod livro3;
+mod livros;
 mod sons;
 
 use wasm_bindgen::prelude::{ Closure, wasm_bindgen, JsValue };
 use web_sys::{ window, HtmlAudioElement };
 use wasm_bindgen::JsCast;
-use livro1::LIVRO_1;
-use livro2::LIVRO_2;
-use livro3::LIVRO_3;
+use livros::*;
 use sons:: { SOM_INICIO, SOM_TERMINO };
 
 // Importa a função main para ser executada quando a página abre
