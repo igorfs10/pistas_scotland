@@ -1,6 +1,6 @@
 const SEM_PISTA: &str = "(Sem pista.)";
 
-pub const LIVRO_1: [&str; 171] = [
+pub const LIVRO_1: [&str; 206] = [
     "Earl Akintern tem constantes dores de cabeça.",
     "A faca no peito de Foster não foi enfiada por mãos humanas.",
     "Pista do assassino (3 partes):\nIII) Sabor amargo.",
@@ -171,7 +171,42 @@ pub const LIVRO_1: [&str; 171] = [
     "Pista do sequestrador (3 partes):\nII) Lugar do porto onde ocorrem o embarque e o desembarque.",
     "George Netter fez uma nova chave na segunda-feira.",
     "Pista da arma (2 partes):\nII) Nascida na Inglaterra.",
-    "As pérolas Olhos de Lúcifer eram valiosas demais para que Hickel se separasse delas. Ele ainda estava com elas quando morreu."
+    "As pérolas Olhos de Lúcifer eram valiosas demais para que Hickel se separasse delas. Ele ainda estava com elas quando morreu.",
+    "O casal Dunphyl vivia discutindo, porque ele esbanjava o dinheiro dela, que reclamava.",
+    "Pista do motivo (4 partes):\nI) Relativa à mãe.",
+    "Skottle, que sempre fora um homem honesto, ficou por algum tempo se sentindo culpado.",
+    "O advogado James Pushkin é uma autoridade em selos e moedas raras.",
+    "Pista para o código:\nC = D",
+    "Pista do assassino (4 partes):\nIII) De + um.",
+    "Pista do paradeiro (3 partes):\nIII) Aqui.",
+    "Uma mulher que mora no andar de cima da livraria disse ter visto três ou quatro homens em uma carruagem particular, no beco, sábado passado.",
+    "Pista da fortuna (4 partes):\nIV) Parte da roda da bicicleta.",
+    "Pista para o código:\nN = O",
+    "O homem tem o reflexo de juntar as pernas para evitar a queda de um objeto; já a mulher as afasta, para que o objeto seja retido na saia.",
+    "Anouk Ashwalls trabalha como governanta e pajem há mais de vinte anos.",
+    "Pistas do motivo (4 partes):\nI) Fui passear a pé. O sujeito gramatical dessa frase está ___.\nII) Torneira pela qual se corta o fornecimento de água.",
+    "Pista da fortuna (4 partes):\nII) Cada uma das partes da corrente.",
+    SEM_PISTA,
+    "A sra. Dunphyl tem um jardineiro chamado Winthrop Rontris.",
+    "O marido de Anouk Ashwalls é pescador.",
+    "Embora o corpo de Skottle  cheirasse a uísque, a autópsia provou que não havia álcool em seu sangue.",
+    "Não há sangue na bengala.",
+    "Pista da arma (2 partes):\nI) Feita para abrir e fechar.",
+    "Pista para o código:\nD = E",
+    "Holmes percebeu que a sra. Dunphyl não estava usando aliança, nem havia marca alguma em seus dedos.",
+    SEM_PISTA,
+    "A firma de Skottle estava forjando documentos para encobrir a decadente situação financeira.",
+    "A mensagem diz onde estão escondidas as pérolas.",
+    "Pista do motivo (3 partes):\nIII) Sociedade anônima.",
+    "Pista do paradeiro (3 partes):\nII) Tira a roupa, desnuda.",
+    "Duas manchas foram recentemente removidas do carpete do escritório de Thomas Jones. Uma delas tinha um leve cheiro de uísque.",
+    SEM_PISTA,
+    "A mensagem deve ser lida da direita para a esquerda.",
+    "Winston sabia que a mulher ia deixar a maior parte de seus bens para instituições de caridade.",
+    "Pista do motivo (4 partes):\nIV) Individuo não militar.",
+    "Thomas Jones e George Netter foram vistos bebendo no bar sábado à tarde.",
+    "Holmes está com a fortuna em seu bolso.",
+    "Pista para o código:\nQ = R"
 ];
 
 pub const LIVRO_2: [&str; 1] = [
