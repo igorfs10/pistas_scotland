@@ -3,7 +3,6 @@ name = "pistas_scotland"
 version = "0.9.1"
 authors = ["Igorfs10 <igorfs10@gmail.com>"]
 edition = "2018"
-license = "gpl-v3"
 repository = "https://github.com/igorfs10/pistas_scotland"
 description = "Um site para ver as pistas do Scotland Yard em WebAssembly usando Rust."
 homepage = "https://igorfs10.github.io/pistas_scotland/index.html"
@@ -17,9 +16,10 @@ wasm-bindgen = "^0.2.63"
 [dependencies.web-sys]
 version = "^0.3.4"
 features = [
+  "Window",
   "Document",
   "HtmlElement",
   "HtmlInputElement",
-  "HtmlAudioElement",
-  "Window"
+  "HtmlSelectElement",
+  "HtmlAudioElement"
 ]
