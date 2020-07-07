@@ -1,101 +1,96 @@
 <!doctype html>
 <html lang=”pt-br”>
-  <head>
 
-    <meta http-equiv="Content-Language" content="pt-br">
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    
-    <title>Pistas Scotland Yard</title>
+<head>
 
-    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-    <link rel="manifest" href="manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="ms-icon-70x70.png">
-    <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="Content-Language" content="pt-br">
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bulma.min.css">
 
-    <style>
-      @font-face {
-        font-family: Muli;
-        src: url(Muli.ttf);
-      }
+  <title>Pistas Scotland Yard</title>
 
-      * {
-        font-family: Muli;
-      }
-    </style>
+  <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="ms-icon-70x70.png">
+  <meta name="theme-color" content="#ffffff">
 
-  </head>
+  <style>
+    @font-face {
+      font-family: Muli;
+      src: url(Muli.ttf);
+    }
 
-  <body>
-    <div class="container" id="escolher" hidden="true">
+    * {
+      font-family: Muli;
+    }
+  </style>
 
-      <div class="row">
-        <div class="col-12">
-          <h2 class="text-center">Pistas Scotland Yard</p>
-        </div>
-      </div>
+</head>
 
-      <div class="row">
-        <div class="col-12">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text">Livro:</label>
-            </div>
-            <select class="form-control" id="numeroLivro">
-              <option value="0">Livro 1</option>
-              <option value="1">Livro 2</option>
-              <option value="2">Livro 3</option>
-            </select>
-          </div>
-        </div>
-      </div>
+<body>
+  <div class="container" id="escolher" hidden="true">
 
-      <div class="row">
-        <div class="col-12">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text">Número da pista:</label>
-            </div>
-            <input class="form-control" type="number" min="1" max="280" id="numeroPista">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <button type="button" class="btn btn-primary btn-block" id="verPista">Ver Pista</button>
-        </div>
-      </div>
-
+    <div class="content has-text-centered">
+      <h2 class="title">Pistas Scotland Yard</p>
     </div>
 
-    <div class="container" id="pista" hidden="true">
-
-      <div class="row">
-        <div class="col-12">
-          <h4>Tempo restante: <span id="tempoRestante">0</span></h4>
-        </div>
+    <div class="content">
+      <div class="field has-addons">
+        <p class="control">
+          <label class="button is-static is-rounded">Livro:</label>
+        </p>
+        <p class="control is-expanded">
+          <select class="input is-fullwidth is-rounded" id="numeroLivro">
+            <option value="0">Livro 1</option>
+            <option value="1">Livro 2</option>
+            <option value="2">Livro 3</option>
+          </select>
+        </p>
       </div>
-
-      <div class="row">
-        <div class="col-12">
-          <p id="textoPista"></p>
-        </div>
-      </div>
-
     </div>
 
-    <script type="module">
-      import init from './pkg/pistas_scotland.js';
+    <div class="content">
+      <div class="field has-addons">
+        <p class="control">
+          <label class="button is-static is-rounded">Número da pista:</label>
+        </p>
+        <p class="control is-expanded">
+          <input class="input is-fullwidth is-rounded" type="number" min="1" max="280" id="numeroPista" placeholder="1">
+        </p>
+      </div>
+    </div>
 
-      async function run() {
-        await init();
-      }
+    <div class="content">
+      <button type="button" class="button is-primary is-medium is-fullwidth is-rounded" id="verPista">Ver
+        Pista</button>
+    </div>
 
-      run();
-    </script>
-  </body>
+  </div>
+
+  <div class="container" id="pista" hidden="true">
+
+    <div class="content is-medium">
+      <h4 class="subtitle">Tempo restante: <span id="tempoRestante">0</span></h4>
+    </div>
+
+    <div class="content is-medium">
+      <p class="is-large" id="textoPista"></p>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import init from './pkg/pistas_scotland.js';
+
+    async function run() {
+      await init();
+    }
+
+    run();
+  </script>
+</body>
+
 </html>
