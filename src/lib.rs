@@ -73,12 +73,8 @@ fn usar_pista() -> Result<(), JsValue> {
 fn carregar_pista() -> Result<(), JsValue> {
     let som_inicio: HtmlAudioElement = HtmlAudioElement::new_with_src(&format!("data:audio/wav;base64,{}", SOM_INICIO))?;
 
-    let comeca_pista = Closure::wrap(Box::new(|| {
-        let _ = mudar_para_pista();
-    }) as Box<dyn FnMut()>);
-
-    let _ = som_inicio.play().unwrap().finally(&comeca_pista);
-    comeca_pista.forget();
+    let _ = som_inicio.play().unwrap();
+    let _ = mudar_para_pista();
 
     Ok(())
 }
@@ -119,12 +115,8 @@ fn atualizar() -> Result<(), JsValue> {
     let tempo = pegar_tempo_restante().unwrap();
 
     if tempo <= 0 {
-        let acaba_pista = Closure::wrap(Box::new(|| {
-            let _ = mudar_para_escolha();
-        }) as Box<dyn FnMut()>);
-
-        let _ = som_termino.play().unwrap().finally(&acaba_pista);
-        acaba_pista.forget();
+        let _ = som_termino.play().unwrap();
+        let _ = mudar_para_escolha();
     } else {
         atualizar_tempo_restante(tempo - 1)?;
 
