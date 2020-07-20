@@ -1,6 +1,6 @@
 [package]
 name = "pistas_scotland"
-version = "0.9.1"
+version = "0.9.2"
 authors = ["Igorfs10 <igorfs10@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/igorfs10/pistas_scotland"
