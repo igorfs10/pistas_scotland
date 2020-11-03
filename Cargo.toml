@@ -11,10 +11,12 @@ homepage = "https://igorfs10.github.io/pistas_scotland/index.html"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-wasm-bindgen = "^0.2.67"
+wasm-bindgen = "^0.2.68"
+wasm-bindgen-futures = "^0.4.18"
+futures = "^0.3.7"
 
 [dependencies.web-sys]
-version = "^0.3.44"
+version = "^0.3.45"
 features = [
   "Window",
   "Document",

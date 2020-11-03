@@ -1,12 +1,11 @@
-extern crate wasm_bindgen;
-extern crate web_sys;
-
 mod pistas;
 mod sons;
 
 use wasm_bindgen::prelude:: { Closure, wasm_bindgen, JsValue };
 use web_sys:: { Window, window, Document, HtmlElement, HtmlInputElement, HtmlSelectElement, HtmlAudioElement };
 use wasm_bindgen::JsCast;
+use wasm_bindgen_futures::JsFuture;
+use futures::executor;
 use pistas::LIVROS;
 use sons:: { SOM_INICIO, SOM_TERMINO };
 
@@ -52,7 +51,7 @@ fn usar_pista() -> Result<(), JsValue> {
                             let escolher: HtmlElement = document.get_element_by_id("escolher").unwrap().dyn_into::<HtmlElement>()?;
                             let pista: HtmlElement = document.get_element_by_id("pista").unwrap().dyn_into::<HtmlElement>()?;
 
-                            let _ = som_inicio.play().unwrap();
+                            let _ = executor::block_on(JsFuture::from(som_inicio.play().unwrap())).unwrap();
                             texto_pista.set_inner_text(LIVROS[livro_valor][pista_valor - 1]);
                             escolher.set_hidden(true);
                             pista.set_hidden(false);
