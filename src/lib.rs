@@ -51,6 +51,7 @@ fn usar_pista() -> Result<(), JsValue> {
                             let tempo_restante: HtmlElement = document.get_element_by_id("tempoRestante").unwrap().dyn_into::<HtmlElement>()?;
                             let escolher: HtmlElement = document.get_element_by_id("escolher").unwrap().dyn_into::<HtmlElement>()?;
                             let pista: HtmlElement = document.get_element_by_id("pista").unwrap().dyn_into::<HtmlElement>()?;
+                            numero_pista.set_value("");
 
                             let _ = som_inicio.play().unwrap();
                             texto_pista.set_inner_text(LIVROS[livro_valor][pista_valor - 1]);
